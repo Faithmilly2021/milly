@@ -11,11 +11,12 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import Profile from './components/Profile.vue';
 import Home from './components/Home.vue';
-
+import Register from './Auth/Register.vue';
 
 const routes = [
     { path: '/', component: Home },
-    { path: '/profile', component: Profile }
+    { path: '/profile', component: Profile },
+    { path: '/Register', component: Register }
 
   ];
   

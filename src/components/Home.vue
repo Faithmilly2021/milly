@@ -113,7 +113,7 @@
           </div>
 
         </div><!-- End Customers Card -->
-        <Pie :data="data" :options="options" />
+     
         <!-- Reports -->
         <div class="col-12">
           <div class="card">
