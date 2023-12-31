@@ -116,9 +116,19 @@ export default {
       description: '',  
     })
 
+  const  updateTodo = (id) => {
+  existingTodos = JSON.parse(localStorage.getItem('todos')) || [];
+  const index = existingTodos.findIndex((todo) => todo.id == id);
+  existingTodos[index] = form_data;
+  localStorage.setItem('todos', JSON.stringify(existingTodos));
+}
+
 
     const submit = () => {
 
+      if(form_data.id){
+       return updateTodo(form_data.id);
+      }
    existingTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
   const newTodo = {
@@ -132,6 +142,7 @@ export default {
 
   localStorage.setItem('todos', JSON.stringify(existingTodos));
 }
+
 
 
 const getCategory = (id) => {
@@ -174,7 +185,8 @@ const getAllTodos = () => {
      getAllTodos,
      deleteTodo,
      generateId,
-     editTodo
+     editTodo,
+     updateTodo
 
   }
   }
