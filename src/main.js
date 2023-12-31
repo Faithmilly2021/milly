@@ -15,6 +15,7 @@ import Register from './Auth/Register.vue';
 import Login from './Auth/Login.vue';
 import Contact from './Auth/Contact.vue';
 import Faq from './Auth/Faq.vue';
+import ToDoList from './ToDo/ToDoList.vue';
 
 const routes = [
     { path: '/', component: Home },
@@ -23,6 +24,7 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/contact', component: Contact },
     { path: '/faq', component: Faq },
+    {path: '/todolist', component: ToDoList },
 
 
   ];
