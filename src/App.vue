@@ -11,10 +11,13 @@ export default{
           const products = ref(null);
           const singleProduct = ref(null);
           let showModal = ref(false)
+          let isLoading = ref(false)
           onMounted(() => {
+            isLoading = true;
             fetch('https://fakestoreapi.com/products/category/electronics?limit=24')
             .then(res => res.json())
             .then(json => {
+              isLoading = false;
               products.value = json;
             })
               .catch(error => {
@@ -23,12 +26,12 @@ export default{
           })
 
           function limit(string='', limit=130){
-          if(string){
-            if(string.length >= limit){
-          return string.substring(0, limit) + '...'
-           }  
-          return string.substring(0, limit)
-          }
+              if(string){
+                if(string.length >= limit){
+              return string.substring(0, limit) + '...'
+              }  
+              return string.substring(0, limit)
+              }
           
         }
 
@@ -42,7 +45,7 @@ export default{
         }
 
           return {
-            products,
+            products,isLoading,
             limit,singleProduct,
             getSingleProduct,
             showModal
@@ -56,6 +59,11 @@ export default{
     <h3 class="text-center">My Fake Store API</h3>
 
    <div class="row">
+
+    <div class="spinner-grow text-center" role="status" v-if="isLoading">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+
     <div class="col-3" v-for="product in products" :key="product.id">
       <div class="card" style="width: 18rem;">
         <img :src="product.image" class="card-img-top" alt="...">
